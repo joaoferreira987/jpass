@@ -26,6 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package jpass.ui.action;
 
 import java.awt.event.ActionEvent;
@@ -130,7 +131,7 @@ public enum MenuActionType {
             StringBuilder sb = new StringBuilder();
             sb.append("<b>" + JPassFrame.PROGRAM_NAME + "</b>\n");
             sb.append("version: " + JPassFrame.PROGRAM_VERSION + "\n");
-            sb.append("Copyright &copy; 2009-2021 G\u00e1bor Bata\n");
+            sb.append("Copyright &copy; 2009-2021 G\u00e1bor Bata\n"); //this is á
             sb.append("\n");
             sb.append("Java version: ").append(System.getProperties().getProperty("java.version")).append("\n");
             sb.append(System.getProperties().getProperty("java.vendor"));

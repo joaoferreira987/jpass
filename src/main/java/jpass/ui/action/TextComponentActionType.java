@@ -26,6 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package jpass.ui.action;
 
 import java.awt.event.ActionEvent;
@@ -131,7 +132,7 @@ public enum TextComponentActionType {
                             String dotChars = doc.getText(dot, 2);
                             char c0 = dotChars.charAt(0);
                             char c1 = dotChars.charAt(1);
-                            if (c0 >= '\uD800' && c0 <= '\uDBFF' && c1 >= '\uDC00' && c1 <= '\uDFFF') {
+                            if (c0 >= '\uD800' && c0 <= '\uDBFF' && c1 >= '\uDC00' && c1 <= '\uDFFF') { //this represent hangul syllables
                                 delChars = 2;
                             }
                         }
