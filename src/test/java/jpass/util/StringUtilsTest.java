@@ -88,5 +88,53 @@ public class StringUtilsTest {
         org.junit.Assert.assertNull(result);
     }
     
-    //...
+    @Test
+    public void testNullXMLString(){
+
+        //arrange
+        String text = null;
+
+        //act
+        String result = StringUtils.stripNonValidXMLCharacters(null);
+
+        //assert
+        org.junit.Assert.assertNull(result);
+
+
+
+    }
+
+    @Test
+    public void testNonValidXMLString(){
+
+        //arrange
+        String text = "<invalid>&<string>";
+
+        //act
+        String result = StringUtils.stripNonValidXMLCharacters(text);
+
+        //assert
+        org.junit.Assert.assertEquals("?invalid???string?",result);
+
+    }
+
+    @Test
+    public void testValidXMLString(){
+
+        //arrange
+        String text = "validstring";
+
+        //act
+        String result = StringUtils.stripNonValidXMLCharacters(text);
+
+        //assert
+        org.junit.Assert.assertEquals("validstring", result);
+
+
+    }
+
+
+    
+
+
 }
