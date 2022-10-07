@@ -1,4 +1,4 @@
-/*
+
 package jpass.util;
 
 import org.junit.Assert;
@@ -7,18 +7,16 @@ import org.junit.Test;
 public class CryptUtilsTest {
 
     //According to category-partition....
-
+    
     @Test
     public void testNullCharacters(){
 
         //arrange
         String null_string = null;
 
-        //act
-        String result = getSha256Hash(null_string);
+        //act and assert
 
-        //assert
-        org.junit.Assert.assertNull(result);
+        org.junit.Assert.assertThrows(java.lang.NullPointerException.class , () -> CryptUtils.getSha256Hash(null_string.toCharArray()) );
     
     }
 
@@ -27,12 +25,16 @@ public class CryptUtilsTest {
 
         //arrange
         String text = "abcedfghijklmnopqrstuvwxyz1234567890abcedfghijklmnopqrstuvwxyz1234567890";
-
+        byte[] result;
+        
         //act
-        String result = getSha256Hash(text);
-
-        //assert
-        org.junit.Assert.assertTrue(result.length == 64);
+        try{
+            result = CryptUtils.getSha256Hash(text.toCharArray());
+        } catch(Exception e){
+            throw new RuntimeException(e);
+        }
+         
+        org.junit.Assert.assertEquals(result.length,32);
 
     }
 
@@ -41,29 +43,19 @@ public class CryptUtilsTest {
 
          //arrange
         String text = "abcedfghijklmnopqrstuvwxyz1234567890";
-
+        byte[] result;
+        
         //act
-        String result = getSha256Hash(text);
-
-        //assert
-        org.junit.Assert.assertTrue(result.length == 64);
+        try{
+            result = CryptUtils.getSha256Hash(text.toCharArray());
+        } catch(Exception e){
+            throw new RuntimeException(e);
+        }
+         
+        org.junit.Assert.assertEquals(result.length,32);
 
 
     }
 
-    @Test
-    public void testCorrectHash(){
-
-        //arrange
-        String text = "string";
-
-        //act
-        String result = getSha256Hash(text);
-
-        //assert
-        org.junit.Assert.assertEquals("473287f8298dba7163a897908958f7c0eae733e25d2e027992ea2edc9bed2fa8", result);
-
-    }
-    
    
-}*/
+}
