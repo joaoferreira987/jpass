@@ -58,6 +58,7 @@ public final class StringUtils {
         char current;
         for (int i = 0; i < in.length(); i++) {
             current = in.charAt(i);
+            // System.out.println("current: " + current);
             if ((current == 0x9) || (current == 0xA) || (current == 0xD)
                     || ((current >= 0x20) && (current <= 0xD7FF))
                     || ((current >= 0xE000) && (current <= 0xFFFD))
@@ -67,6 +68,7 @@ public final class StringUtils {
                 out.append('?');
             }
         }
+        System.out.println("string= " + out.toString());
         return out.toString();
     }
 
