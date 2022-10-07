@@ -21,7 +21,7 @@ public class CryptUtilsTest {
     }
 
     @Test
-    public void testMorethan64chars(){
+    public void testMorethan32chars(){
 
         //arrange
         String text = "abcedfghijklmnopqrstuvwxyz1234567890abcedfghijklmnopqrstuvwxyz1234567890";
@@ -39,7 +39,7 @@ public class CryptUtilsTest {
     }
 
     @Test
-    public void testLessthan64chars(){
+    public void testLessthan32chars(){
 
          //arrange
         String text = "abcedfghijklmnopqrstuvwxyz1234567890";

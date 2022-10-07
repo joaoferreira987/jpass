@@ -8,12 +8,12 @@ public class StringUtilsTest {
     
     /**
 
-        TestCase1()
+        TestBiggerLength
         If length is bigger than the provided string, then the function should return the original string
     
      */
     @Test
-    public void testCase1(){
+    public void testBiggerLength(){
         
         //arrange
         String text = "String"; 
@@ -29,12 +29,12 @@ public class StringUtilsTest {
 
      /**
 
-        testCase2()
+        testSmallerLength
         If length is smaller than the provided string, then the function should return the correct substring
     
      */
     @Test
-    public void testCase2(){
+    public void testSmallerLength(){
         
         //arrange
         
