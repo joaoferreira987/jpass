@@ -59,12 +59,9 @@ public class StringUtilsTest {
         //arrange
         String text = "String";
         int length = -1;
-
-        //act
-        String result = StringUtils.stripString(text,length);
         
-         //assert
-        org.junit.Assert.assertEquals("String",result);
+         //act and assert
+        org.junit.Assert.assertThrows(StringIndexOutOfBoundsException.class, () -> StringUtils.stripString(text,length));
 
     }
 
@@ -112,6 +109,7 @@ public class StringUtilsTest {
 
         //act
         String result = StringUtils.stripNonValidXMLCharacters(text);
+        System.out.print(result);
 
         //assert
         org.junit.Assert.assertEquals("?invalid???string?",result);
