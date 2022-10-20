@@ -48,6 +48,66 @@ public class StringUtilsTest {
         org.junit.Assert.assertEquals("St", result);
     }
 
+    @Test
+    public void testEqualLength(){
+
+        //arrange
+        String text = "String";
+        int length = 6;
+
+        //act
+        String result = StringUtils.stripString(text,length);
+
+        //assert
+        org.junit.Assert.assertEquals("String", result);
+
+    }
+
+    @Test
+    public void testOffbyOneLength(){
+
+        //arrange
+        String text = "Example";
+        int length = 8;
+
+        //act
+        String result = StringUtils.stripString(text,length);
+
+        //assert
+        org.junit.Assert.assertEquals("Example", result);
+
+    }
+
+    @Test
+    public void testEmptyString(){
+
+        //arrange
+        String text = "";
+        int length = 8;
+
+        //act
+        String result = StringUtils.stripString(text,length);
+
+        //assert
+        org.junit.Assert.assertEquals("", result);
+
+    }
+
+    @Test
+    public void testLengthZero(){
+
+        //arrange
+        String text = "String";
+        int length = 0;
+
+        //act
+        String result = StringUtils.stripString(text,length);
+
+        //assert
+        org.junit.Assert.assertEquals("", result);
+
+    }
+
     /**
         testNegativeLength()
         If the provided length is null, the function should return the provided string object
