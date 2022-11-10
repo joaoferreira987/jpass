@@ -24,6 +24,21 @@ public class DateUtilsTest {
     }
 
     @Test
+    public void testNull(){
+
+        //arrange
+        final DateTimeFormatter FORMATTER = DateUtils.createFormatter(null);
+
+        //act
+        String result = DateUtils.formatIsoDateTime("2017-10-15T10:15:30", FORMATTER);
+
+        //assert
+        org.junit.Assert.assertNull(result);
+
+
+    }
+
+    @Test
     public void testIncorrectFormat(){
 
         //arrange
