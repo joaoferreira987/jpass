@@ -50,7 +50,34 @@ public class EntriesRepositoryTest {
 
     }
 
-    
+    @Test
+    public void testWriteDocumentWithKey(){
+
+        String filename = "validFilename.txt";
+        byte[] key = "c18nd6NMDB".getBytes();
+        EntriesRepository result = EntriesRepository.newInstance(filename,key);
+
+        DataModel dm = DataModel.getInstance();
+
+        try{
+            dm.setEntries(EntriesRepository.newInstance("test1.xml","c18nd6NMDB".getBytes()).readDocument());
+        }catch(Exception e){
+            System.out.println("Error");
+        }
+
+        Entries entries = dm.getEntries();
+
+        EntriesRepository er = EntriesRepository.newInstance("test2.xml","c18nd6NMDB".getBytes());
+        try {
+            er.writeDocument(entries);
+        } catch (DocumentProcessException | IOException c) {
+
+            org.junit.Assert.fail();
+
+        }
+
+    }
+
     @Test
     public void testNullkey(){
 
