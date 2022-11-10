@@ -114,9 +114,22 @@ public class DataModelTest{
         String result = entry.getUrl();
 
         org.junit.Assert.assertEquals(result,"www.github.com");
+    }
 
+    @Test
+    public void testGetEntryByTitleNull(){
+        DataModel dm = DataModel.getInstance();
 
+        try{
+            dm.setEntries(EntriesRepository.newInstance("test1.xml").readDocument());
+        }catch(Exception e){
+            System.out.println("Error");
+        }
 
+        Entry entry = dm.getEntryByTitle(null);
+        String result = entry.getUrl();
+
+        org.junit.Assert.assertEquals(result,"www.github.com");
     }
 
 }
