@@ -16,9 +16,19 @@ public class ClipboardUtilsTest {
 
 
         org.junit.Assert.assertEquals("test",ClipboardUtils.getClipboardContent());
-        
 
+    }
+    @Test
+    public void testEmptySetClipboard(){
 
+        try {
+            ClipboardUtils.setClipboardContent("");
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+        org.junit.Assert.assertNull(ClipboardUtils.getClipboardContent());
 
     }
 
