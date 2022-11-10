@@ -13,8 +13,12 @@ dependencies {
     compile group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-xml', version: '2.9.3'
     compile group: 'com.formdev', name: 'flatlaf', version: '0.43'
     compile group: 'com.formdev', name: 'svgSalamander', version: '1.1.2.3'
-
+    
+    testCompile("org.junit.jupiter:junit-jupiter-params:5.3.1")
     testCompile 'junit:junit:4.13.1'
+   
+    
+    
 }
 
 jar {

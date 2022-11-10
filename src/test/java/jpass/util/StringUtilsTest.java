@@ -1,7 +1,11 @@
 package jpass.util;
 
-import org.junit.Assert;
+
+import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.Test;
+
+
+import org.junit.jupiter.params.provider.ValueSource;
 
 public class StringUtilsTest {
 
@@ -235,8 +239,142 @@ public class StringUtilsTest {
 
     }
 
+    @Test
+    public void testDefaultStripString(){
+         //arrange
+         String text = "hAakOV9DEgmHkipx26fbMW5Llj6zHEmdiVoMgnRg0fNgdYwetqAnFvDD4kkitROS1tOObJMECaOcfdnf";
+        
+ 
+         //act
+         String result = StringUtils.stripString(text);
+ 
+         //assert
+         org.junit.Assert.assertEquals("hAakOV9DEgmHkipx26fbMW5Llj6zHEmdiVoMgnRg0fNgdYwetqAnFvDD4kkitROS1tOObJMECaOcfdnf", result);
+    }
+  
 
+    @Test
+    public void testnonValidXML(){
+
+        String text = "<?&>␛?␊#&␊G^a-jå∫∆avµa2bl√øog\0x";
+
+        char a = (char) 0x11FFFF;
+
+        String result = StringUtils.stripNonValidXMLCharacters(Character.toString(a));
+
+        org.junit.Assert.assertEquals("?", result);
+
+
+    }
+
+    @Test
+    public void validXML1(){
+
+        char a = (char) 0x9;
+
+        String result = StringUtils.stripNonValidXMLCharacters(Character.toString(a));
+
+        org.junit.Assert.assertEquals(a, result);
+
+    }
+    @Test
+    public void validXML2(){
+
+        char a = (char) 0xA;
+
+        String result = StringUtils.stripNonValidXMLCharacters(Character.toString(a));
+
+        org.junit.Assert.assertEquals(a, result);
+
+    }
+
+    @Test
+    public void validXML3(){
+
+        char a = (char) 0xD;
+
+        String result = StringUtils.stripNonValidXMLCharacters(Character.toString(a));
+
+        org.junit.Assert.assertEquals(a, result);
+
+    }
     
+    @Test
+    public void validXML4(){
 
+        char a = (char) 0x20;
+
+        String result = StringUtils.stripNonValidXMLCharacters(Character.toString(a));
+
+        org.junit.Assert.assertEquals(a, result);
+
+    }
+
+    @Test
+    public void validXML5(){
+
+        char a = (char) 0xD7FF;
+
+        String result = StringUtils.stripNonValidXMLCharacters(Character.toString(a));
+
+        org.junit.Assert.assertEquals(a, result);
+
+    }
+
+    @Test
+    public void validXML6(){
+
+        char a = (char) 0xE000;
+
+        String result = StringUtils.stripNonValidXMLCharacters(Character.toString(a));
+
+        org.junit.Assert.assertEquals(a, result);
+
+    }
+
+    @Test
+    public void validXML7(){
+
+        char a = (char) 0xFFFD;
+
+        String result = StringUtils.stripNonValidXMLCharacters(Character.toString(a));
+
+        org.junit.Assert.assertEquals(a, result);
+
+    }
+
+    @Test
+    public void validXML8(){
+
+        char a = (char) 0x10000;
+
+        String result = StringUtils.stripNonValidXMLCharacters(Character.toString(a));
+
+        org.junit.Assert.assertEquals(a, result);
+
+    }
+
+    @Test
+    public void validXML9(){
+
+        char a = (char) 0x10FFF;
+
+        String result = StringUtils.stripNonValidXMLCharacters(Character.toString(a));
+
+        org.junit.Assert.assertEquals(a, result);
+
+    }
+   
+    /* 
+    @ParameterizedTest
+    @ValueSource(ints = {0x9, 0xA, 0xD, 0x20, 0xD7FF, 0xE000,0xFFFD,0x10000,0x10FFF}) 
+    public void validXMLtestEdgeCases(int number) {
+
+        char a = (char) number;
+
+        String result = StringUtils.stripNonValidXMLCharacters(Character.toString(a));
+
+        org.junit.Assert.assertEquals(a, result);
+    }*/
 
 }
