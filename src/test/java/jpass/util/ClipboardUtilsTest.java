@@ -33,6 +33,20 @@ public class ClipboardUtilsTest {
     }
 
     @Test
+    public void testNullSetClipboard(){
+
+        try {
+            ClipboardUtils.setClipboardContent(null);
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+        org.junit.Assert.assertNull(ClipboardUtils.getClipboardContent());
+
+    }
+
+    @Test
     public void testClearClipboard(){
 
         try {
