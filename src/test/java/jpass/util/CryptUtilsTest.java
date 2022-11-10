@@ -57,5 +57,24 @@ public class CryptUtilsTest {
 
     }
 
+    @Test
+    public void testLessthan32charsWithIteration(){
+
+        //arrange
+        String text = "abcedfghijklmnopqrstuvwxyz1234567890";
+        byte[] result;
+
+        //act
+        try{
+            result = CryptUtils.getSha256Hash(text.toCharArray(),2);
+        } catch(Exception e){
+            throw new RuntimeException(e);
+        }
+
+        org.junit.Assert.assertEquals(result.length,32);
+
+
+    }
+
    
 }
