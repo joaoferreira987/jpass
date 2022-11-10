@@ -53,14 +53,14 @@ public class CbcTest {
     @Before
     public void setUp() {
         byte[] iv = {(byte) 0x00, (byte) 0x00, (byte) 0x00, (byte) 0x00, (byte) 0x00, (byte) 0x00, (byte) 0x00,
-            (byte) 0x00, (byte) 0x00, (byte) 0x00, (byte) 0x00, (byte) 0x00, (byte) 0x00, (byte) 0x00, (byte) 0x00,
-            (byte) 0x00};
+                (byte) 0x00, (byte) 0x00, (byte) 0x00, (byte) 0x00, (byte) 0x00, (byte) 0x00, (byte) 0x00, (byte) 0x00,
+                (byte) 0x00};
 
         byte[] key = {(byte) 0x00, (byte) 0x00, (byte) 0x00, (byte) 0x00, (byte) 0x00, (byte) 0x00, (byte) 0x00,
-            (byte) 0x00, (byte) 0x00, (byte) 0x00, (byte) 0x00, (byte) 0x00, (byte) 0x00, (byte) 0x00, (byte) 0x00,
-            (byte) 0x00, (byte) 0x00, (byte) 0x00, (byte) 0x00, (byte) 0x00, (byte) 0x00, (byte) 0x00, (byte) 0x00,
-            (byte) 0x00, (byte) 0x00, (byte) 0x00, (byte) 0x00, (byte) 0x00, (byte) 0x00, (byte) 0x00, (byte) 0x00,
-            (byte) 0x00};
+                (byte) 0x00, (byte) 0x00, (byte) 0x00, (byte) 0x00, (byte) 0x00, (byte) 0x00, (byte) 0x00, (byte) 0x00,
+                (byte) 0x00, (byte) 0x00, (byte) 0x00, (byte) 0x00, (byte) 0x00, (byte) 0x00, (byte) 0x00, (byte) 0x00,
+                (byte) 0x00, (byte) 0x00, (byte) 0x00, (byte) 0x00, (byte) 0x00, (byte) 0x00, (byte) 0x00, (byte) 0x00,
+                (byte) 0x00};
 
         _encrypted = new ByteArrayOutputStream();
         _encrypt = new Cbc(iv, key, _encrypted);
@@ -78,6 +78,30 @@ public class CbcTest {
         _encrypt.finishEncryption();
 
         _decrypt.decrypt(_encrypted.toByteArray());
+        _decrypt.finishDecryption();
+
+        Assert.assertTrue(Arrays.equals(source, _decrypted.toByteArray()));
+    }
+
+    @Test
+    public void NullEncrypt() throws DecryptException, IOException {
+        byte[] source = null;
+        _encrypt.encrypt(source);
+        _encrypt.finishEncryption();
+
+        _decrypt.decrypt(_encrypted.toByteArray());
+        _decrypt.finishDecryption();
+
+        Assert.assertTrue(Arrays.equals(source, _decrypted.toByteArray()));
+    }
+
+    @Test
+    public void NullDecrypt() throws DecryptException, IOException {
+        byte[] source = "abcdefg".getBytes();
+        _encrypt.encrypt(source);
+        _encrypt.finishEncryption();
+
+        _decrypt.decrypt(null);
         _decrypt.finishDecryption();
 
         Assert.assertTrue(Arrays.equals(source, _decrypted.toByteArray()));
@@ -123,14 +147,14 @@ public class CbcTest {
     @Test
     public void shouldWorkWithReferenceData() throws DecryptException, IOException {
         byte[] iv = {(byte) 0x51, (byte) 0xA0, (byte) 0xC6, (byte) 0x19, (byte) 0x67, (byte) 0xB0, (byte) 0xE0,
-            (byte) 0xE5, (byte) 0xCF, (byte) 0x46, (byte) 0xB4, (byte) 0xD1, (byte) 0x4C, (byte) 0x83, (byte) 0x4C,
-            (byte) 0x38};
+                (byte) 0xE5, (byte) 0xCF, (byte) 0x46, (byte) 0xB4, (byte) 0xD1, (byte) 0x4C, (byte) 0x83, (byte) 0x4C,
+                (byte) 0x38};
 
         byte[] key = {(byte) 0x97, (byte) 0x6D, (byte) 0x71, (byte) 0x64, (byte) 0xE6, (byte) 0xE3, (byte) 0xB7,
-            (byte) 0xAA, (byte) 0xB5, (byte) 0x30, (byte) 0xDD, (byte) 0x52, (byte) 0xE7, (byte) 0x29, (byte) 0x19,
-            (byte) 0x3A, (byte) 0xD7, (byte) 0xE7, (byte) 0xDF, (byte) 0xD7, (byte) 0x61, (byte) 0xF1, (byte) 0x86,
-            (byte) 0xA4, (byte) 0x4B, (byte) 0xB7, (byte) 0xFA, (byte) 0xDF, (byte) 0x15, (byte) 0x44, (byte) 0x14,
-            (byte) 0x31};
+                (byte) 0xAA, (byte) 0xB5, (byte) 0x30, (byte) 0xDD, (byte) 0x52, (byte) 0xE7, (byte) 0x29, (byte) 0x19,
+                (byte) 0x3A, (byte) 0xD7, (byte) 0xE7, (byte) 0xDF, (byte) 0xD7, (byte) 0x61, (byte) 0xF1, (byte) 0x86,
+                (byte) 0xA4, (byte) 0x4B, (byte) 0xB7, (byte) 0xFA, (byte) 0xDF, (byte) 0x15, (byte) 0x44, (byte) 0x14,
+                (byte) 0x31};
 
         Cbc encrypt = new Cbc(iv, key, _encrypted);
         Cbc decrypt = new Cbc(iv, key, _decrypted);
@@ -138,8 +162,8 @@ public class CbcTest {
         byte[] plain = {(byte) 0x61, (byte) 0x62, (byte) 0x63, (byte) 0x64, (byte) 0x65, (byte) 0x66, (byte) 0x0a};
 
         byte[] expected = {(byte) 0x33, (byte) 0xd7, (byte) 0x0a, (byte) 0x5a, (byte) 0xb7, (byte) 0xfe, (byte) 0xcf,
-            (byte) 0x92, (byte) 0x4f, (byte) 0x39, (byte) 0x70, (byte) 0x83, (byte) 0xd0, (byte) 0xfc, (byte) 0xfe,
-            (byte) 0x3a};
+                (byte) 0x92, (byte) 0x4f, (byte) 0x39, (byte) 0x70, (byte) 0x83, (byte) 0xd0, (byte) 0xfc, (byte) 0xfe,
+                (byte) 0x3a};
 
         encrypt.encrypt(plain);
         encrypt.finishEncryption();
@@ -156,10 +180,11 @@ public class CbcTest {
     /**
      * Test the encryption of one random message with the noted size.
      *
-     * @param rnd Random Number generator
+     * @param rnd  Random Number generator
      * @param size size of the random message in <code>byte</code>s.
      */
-    private void testRandom(Random rnd, int size) throws DecryptException, IOException {
+    @Test
+    public void testRandom(Random rnd, int size) throws DecryptException, IOException {
         byte[] key = new byte[32];
         byte[] iv = new byte[16];
         byte[] data = new byte[size];
