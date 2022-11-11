@@ -56,4 +56,17 @@ public class StreamTest {
         Assert.assertEquals(plain.length, decrypted.toByteArray().length);
         Assert.assertTrue(Arrays.equals(plain, decrypted.toByteArray()));
     }
+
+    @Test
+    public void testCryptInputStreamConstructor(){
+
+        byte[] key = new byte[32];
+        byte[] iv = new byte[16];
+        
+
+        CryptInputStream cis = new CryptInputStream(null, key,iv);
+
+        Assert.assertTrue(true);
+
+    }
 }

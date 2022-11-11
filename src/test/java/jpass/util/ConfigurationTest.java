@@ -1,5 +1,7 @@
 package jpass.util;
 
+import static org.junit.jupiter.api.Assertions.assertNull;
+
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -130,6 +132,29 @@ public class ConfigurationTest {
 
         //assert
         org.junit.Assert.assertEquals(14,result.intValue());
+    }
+
+    @Test
+    public void testArray1(){
+
+        Configuration conf_obj = Configuration.getInstance();
+    
+        String[] result = conf_obj.getArray("key", null);
+
+        assertNull(result);
+
+
+    }
+    @Test
+    public void testArray2(){
+
+        Configuration conf_obj = Configuration.getInstance();
+    
+        String[] result = conf_obj.getArray("entry.details", null);
+
+        assertNull(result);
+
+
     }
 
 }

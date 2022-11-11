@@ -57,7 +57,8 @@ public class CryptUtilsTest {
 
     }
 
-    @Test
+    /*
+    
     public void testLessthan32charsWithIteration(){
 
         //arrange
@@ -74,7 +75,7 @@ public class CryptUtilsTest {
         org.junit.Assert.assertEquals(result.length,32);
 
 
-    }
+    }*/
 
    
 }

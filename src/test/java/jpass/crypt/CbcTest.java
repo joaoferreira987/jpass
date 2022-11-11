@@ -183,8 +183,10 @@ public class CbcTest {
      * @param rnd  Random Number generator
      * @param size size of the random message in <code>byte</code>s.
      */
-    @Test
-    public void testRandom(Random rnd, int size) throws DecryptException, IOException {
+    
+    
+    
+    private void testRandom(Random rnd, int size) throws DecryptException, IOException {
         byte[] key = new byte[32];
         byte[] iv = new byte[16];
         byte[] data = new byte[size];
@@ -202,5 +204,46 @@ public class CbcTest {
         _decrypt.finishDecryption();
 
         Assert.assertTrue(Arrays.equals(data, _decrypted.toByteArray()));
+    }
+
+
+    @Test
+    public void testDecryptNullDataAndLength() throws DecryptException,IOException{
+
+        
+
+        byte[] key = new byte[32];
+        byte[] iv = new byte[16];
+        byte[] plain = {(byte) 0x61, (byte) 0x62, (byte) 0x63, (byte) 0x64, (byte) 0x65, (byte) 0x66, (byte) 0x0a};
+
+        _encrypt = new Cbc(iv, key, _decrypted);
+
+        _encrypt.decrypt(null);
+
+        _encrypt.decrypt(null,0);
+
+        _encrypt.decrypt(plain,0);
+
+        org.junit.Assert.assertTrue(true);
+
+    }
+
+    @Test
+    public void testEncryptDataAndLength() throws DecryptException,IOException{
+
+        
+
+        byte[] key = new byte[32];
+        byte[] iv = new byte[16];
+        byte[] plain = {(byte) 0x61, (byte) 0x62, (byte) 0x63, (byte) 0x64, (byte) 0x65, (byte) 0x66, (byte) 0x0a};
+
+        _encrypt = new Cbc(iv, key, _decrypted);
+
+        _encrypt.encrypt(null,0);
+
+        _encrypt.encrypt(plain,0);
+
+        org.junit.Assert.assertTrue(true);
+
     }
 }
