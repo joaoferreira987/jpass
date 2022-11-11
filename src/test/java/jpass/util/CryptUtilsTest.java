@@ -57,6 +57,25 @@ public class CryptUtilsTest {
 
     }
 
+    @Test
+    public void testPKCSHash(){
+
+         //arrange
+        String text = "abcedfghijklmnopqrstuvwxyz1234567890";
+        byte[] result;
+        
+        //act
+        try{
+            result = CryptUtils.getPKCS5Sha256Hash(text.toCharArray());
+        } catch(Exception e){
+            throw new RuntimeException(e);
+        }
+         
+        org.junit.Assert.assertEquals(result.length,32);
+
+
+    }
+
     /*
     
     public void testLessthan32charsWithIteration(){
