@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
- 
+
 package jpass.util;
 
 import java.io.File;
@@ -76,14 +76,19 @@ public final class Configuration {
 
     private <T> T getValue(String key, T defaultValue, Class<T> type) {
         T value = defaultValue;
-        String prop = properties.getProperty(key);
-        if (prop != null) {
-            try {
-                value = type.getConstructor(String.class).newInstance(prop);
-            } catch (Exception e) {
-                LOG.log(Level.WARNING, String.format("Could not parse value as [%s] for key [%s]", type.getName(), key));
+
+        if (key != null) {
+            String prop = properties.getProperty(key);
+            if (prop != null) {
+                try {
+                    value = type.getConstructor(String.class).newInstance(prop);
+                } catch (Exception e) {
+                    LOG.log(Level.WARNING,
+                            String.format("Could not parse value as [%s] for key [%s]", type.getName(), key));
+                }
             }
         }
+
         return value;
     }
 

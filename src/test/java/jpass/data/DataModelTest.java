@@ -127,6 +127,7 @@ public class DataModelTest{
         }
 
         Entry entry = dm.getEntryByTitle(null);
+
         String result = entry.getUrl();
 
         org.junit.Assert.assertEquals(result,"www.github.com");

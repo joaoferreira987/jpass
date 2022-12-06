@@ -166,10 +166,15 @@ public class DataModel {
      * @return entry (can be null)
      */
     public Entry getEntryByTitle(String title) {
+        
+        if(title == null){
+            return new Entry();
+        }
+        
         int entryIndex = getEntryIndexByTitle(title);
         if (entryIndex != -1) {
             return this.entries.getEntry().get(entryIndex);
         }
-        return null;
+        return new Entry();
     }
 }
