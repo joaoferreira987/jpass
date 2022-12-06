@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<entries>
+  <entry>
+    <title>Github</title>
+    <url>www.github.com</url>
+    <user>john</user>
+    <password>joao</password>
+    <notes/>
+    <lastModification>2022-11-09T14:54:44</lastModification>
+    <creationDate>2022-11-09T14:54:44</creationDate>
+  </entry>
+  <entry>
+    <title>Github (copy)</title>
+    <url>www.github.com</url>
+    <user>john</user>
+    <password>joao</password>
+    <notes/>
+    <lastModification>2022-11-09T14:55:17</lastModification>
+    <creationDate>2022-11-09T14:55:17</creationDate>
+  </entry>
+</entries>

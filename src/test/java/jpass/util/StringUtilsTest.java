@@ -195,32 +195,25 @@ public class StringUtilsTest {
 
     }
 
-    @Test
-    public void testOffByOneInvalidXMLChar() {
-
-        //arrange
-        String text = "&";
-
-        //act
-        String result = StringUtils.stripNonValidXMLCharacters(text);
-
-        //assert
-        org.junit.Assert.assertEquals("?", result);
-
-    }
 
     @Test
     public void testNonValidXMLString(){
 
         //arrange
-        String text = "<invalid>&<string>";
+
+        char a1 = (char) 0x1;
+        char a2 = (char) 0x2;
 
         //act
+
+        String text = new StringBuilder().append(a1).append(a2).append("invalidstring").toString(); 
+
+       // String result = StringUtils.stripNonValidXMLCharacters(Character.toString(a1) + Character.toString(a2) + "invalidstring");
+
         String result = StringUtils.stripNonValidXMLCharacters(text);
-        System.out.print(result);
 
         //assert
-        org.junit.Assert.assertEquals("?invalid???string?",result);
+        org.junit.Assert.assertEquals("??invalidstring",result);
 
     }
 
@@ -255,8 +248,6 @@ public class StringUtilsTest {
 
     @Test
     public void testnonValidXML(){
-
-        String text = "<?&>␛?␊#&␊G^a-jå∫∆avµa2bl√øog\0x";
 
         char a = (char) 0x11FFFF;
 
@@ -350,7 +341,7 @@ public class StringUtilsTest {
 
         String result = StringUtils.stripNonValidXMLCharacters(Character.toString(a));
 
-        org.junit.Assert.assertEquals(Character.toString(a), result);
+        org.junit.Assert.assertEquals("?", result);
 
     }
 

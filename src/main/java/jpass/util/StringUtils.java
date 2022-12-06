@@ -55,15 +55,17 @@ public final class StringUtils {
             return in;
         }
         StringBuilder out = new StringBuilder();
-        char current;
+        int current;
+        char current2;
         for (int i = 0; i < in.length(); i++) {
             current = in.charAt(i);
-            // System.out.println("current: " + current);
+            current2 = in.charAt(i);
+
             if ((current == 0x9) || (current == 0xA) || (current == 0xD)
                     || ((current >= 0x20) && (current <= 0xD7FF))
                     || ((current >= 0xE000) && (current <= 0xFFFD))
                     || ((current >= 0x10000) && (current <= 0x10FFFF))) {
-                out.append(current);
+                out.append(current2);
             } else {
                 out.append('?');
             }
@@ -79,7 +81,7 @@ public final class StringUtils {
     public static String stripString(String text, int length) {
         String result = text;
         if (text != null && text.length() > length) {
-            result = text.substring(0, length) + "...";
+            result = text.substring(0, length);
         }
         return result;
     }

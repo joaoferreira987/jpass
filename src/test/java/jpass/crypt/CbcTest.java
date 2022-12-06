@@ -83,7 +83,7 @@ public class CbcTest {
         Assert.assertTrue(Arrays.equals(source, _decrypted.toByteArray()));
     }
 
-    @Test
+    
     public void NullEncrypt() throws DecryptException, IOException {
         byte[] source = null;
         _encrypt.encrypt(source);
@@ -95,7 +95,7 @@ public class CbcTest {
         Assert.assertTrue(Arrays.equals(source, _decrypted.toByteArray()));
     }
 
-    @Test
+    
     public void NullDecrypt() throws DecryptException, IOException {
         byte[] source = "abcdefg".getBytes();
         _encrypt.encrypt(source);
