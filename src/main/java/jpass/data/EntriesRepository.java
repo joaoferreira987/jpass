@@ -88,6 +88,11 @@ public final class EntriesRepository {
      * @return a new DocumentHelper object
      */
     public static EntriesRepository newInstance(final String fileName) {
+        
+            if(fileName == null){
+                return null;
+            }
+
         return new EntriesRepository(fileName, null);
     }
 
@@ -99,6 +104,11 @@ public final class EntriesRepository {
      * @return a new DocumentHelper object
      */
     public static EntriesRepository newInstance(final String fileName, final byte[] key) {
+
+        if(fileName == null){
+            return null;
+        }
+
         return new EntriesRepository(fileName, key);
     }
 

@@ -152,7 +152,7 @@ public class ConfigurationTest {
     
         String[] result = conf_obj.getArray("entry.details", null);
 
-        assertNull(result);
+        org.junit.Assert.assertNotNull(result);
 
 
     }

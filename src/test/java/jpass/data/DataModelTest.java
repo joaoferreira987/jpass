@@ -130,7 +130,7 @@ public class DataModelTest{
 
         String result = entry.getUrl();
 
-        org.junit.Assert.assertEquals(result,"www.github.com");
+        org.junit.Assert.assertEquals(result,null);
     }
 
 }
