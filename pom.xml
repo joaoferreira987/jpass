@@ -87,6 +87,24 @@
     
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.pitest</groupId>
+                <artifactId>pitest-maven</artifactId>
+                <version>1.10.0</version>
+                <configuration>
+                    <targetClasses>
+                        <param>jpass.JPass</param>
+                        <param>jpass.crypt.*</param>
+                        <param>jpass.data.*</param>
+                        <param>jpass.xml.*</param>
+                        <param>jpass.util.ClipboardUtils</param>
+                        <param>jpass.util.Configuration</param>
+                        <param>jpass.util.CryptUtils</param>
+                        <param>jpass.util.DateUtils</param>
+                        <param>jpass.util.StringUtils</param>
+                    </targetClasses>
+                </configuration>
+            </plugin>
 
             <plugin>
                 <groupId>org.jacoco</groupId>
@@ -244,6 +262,11 @@
 
     <reporting>
         <plugins>
+            <plugin>
+                <groupId>org.pitest</groupId>
+                <artifactId>pitest-maven</artifactId>
+                <version>LATEST</version>
+            </plugin>
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
