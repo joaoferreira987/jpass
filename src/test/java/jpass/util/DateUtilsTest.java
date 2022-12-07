@@ -12,7 +12,7 @@ public class DateUtilsTest {
     public void testCorrectFormatAndString(){
 
         //arrange
-        final DateTimeFormatter FORMATTER = DateUtils.createFormatter(Configuration.getInstance().get("date.format", "yyyy-MM-ddHH:mm:ss"));
+        final DateTimeFormatter FORMATTER = DateUtils.createFormatter("yyyy-MM-ddHH:mm:ss");
         
         //act
         String result = DateUtils.formatIsoDateTime("2017-10-15T10:15:30", FORMATTER);
@@ -33,7 +33,7 @@ public class DateUtilsTest {
         String result = DateUtils.formatIsoDateTime("2017-10-15T10:15:30", FORMATTER);
 
         //assert
-        org.junit.Assert.assertNull(result);
+        org.junit.Assert.assertEquals("2017-10-15", result);
 
 
     }
@@ -49,7 +49,7 @@ public class DateUtilsTest {
         String result = DateUtils.formatIsoDateTime(date, FORMATTER);
 
         //assert
-        org.junit.Assert.assertEquals("1970-01-0101:00:00", result);
+        org.junit.Assert.assertEquals("2017-10-15", result);
 
     }
 
@@ -57,13 +57,13 @@ public class DateUtilsTest {
     public void testIncorrectStringNoTime(){
 
         //arrange
-        final DateTimeFormatter FORMATTER = DateUtils.createFormatter(Configuration.getInstance().get("date.format", "yyyy-MM-ddHH:mm:ss"));
+        final DateTimeFormatter FORMATTER = DateUtils.createFormatter("yyyy-MM-ddHH:mm:ss");
         String date = "2017-11-15";
         //act
         String result = DateUtils.formatIsoDateTime(date, FORMATTER);
 
         //assert
-        org.junit.Assert.assertEquals("2017-11-1500:00:00", result);
+        org.junit.Assert.assertEquals("1970-01-0101:00:00", result);
 
     }
 
@@ -71,7 +71,7 @@ public class DateUtilsTest {
     public void testIncorrectStringNotDate(){
 
         //arrange
-        final DateTimeFormatter FORMATTER = DateUtils.createFormatter(Configuration.getInstance().get("date.format", "yyyy-MM-ddHH:mm:ss"));
+        final DateTimeFormatter FORMATTER = DateUtils.createFormatter("yyyy-MM-ddHH:mm:ss");
         String date = "This is not a date";
         //act
         String result = DateUtils.formatIsoDateTime(date, FORMATTER);
