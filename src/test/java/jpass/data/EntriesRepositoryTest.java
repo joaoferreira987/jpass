@@ -125,9 +125,8 @@ public class EntriesRepositoryTest {
 
         org.junit.Assert.assertTrue(result instanceof EntriesRepository);
 
-
-
     }
+
 
 
 
