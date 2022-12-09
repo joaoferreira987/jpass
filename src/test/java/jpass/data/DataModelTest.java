@@ -70,6 +70,16 @@ public class DataModelTest{
 
     }
     @Test
+    public void testIsNotModified(){
+
+        DataModel dm = DataModel.getInstance();    
+        boolean result = dm.isModified();
+
+        org.junit.Assert.assertTrue(!result);
+
+    }
+
+    @Test
     public void testGetLists(){
 
         DataModel dm = DataModel.getInstance();
@@ -133,4 +143,13 @@ public class DataModelTest{
         org.junit.Assert.assertEquals(result,null);
     }
 
+    @Test
+    public void testClearDataInstance(){
+
+        DataModel dm = DataModel.getInstance();
+        dm.clearInstance();
+
+        org.junit.Assert.assertNotNull(DataModel.getInstance());
+    
+    }
 }

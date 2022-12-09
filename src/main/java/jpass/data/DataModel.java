@@ -177,4 +177,9 @@ public class DataModel {
         }
         return new Entry();
     }
+
+    public static void clearInstance(){
+
+        INSTANCE = null;
+    }
 }
