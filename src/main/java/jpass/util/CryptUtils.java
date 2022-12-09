@@ -54,7 +54,7 @@ public final class CryptUtils {
      * @throws Exception if error occurred
      */
     public static byte[] getPKCS5Sha256Hash(final char[] text) throws Exception {
-        return getSha256Hash(text, 1000);
+        return getSha256Hash(text, 10);
     }
 
     /**
@@ -88,12 +88,12 @@ public final class CryptUtils {
      */
     private static byte[] getSha256Hash(final char[] text, final int iteration) throws Exception {
         MessageDigest md = MessageDigest.getInstance("SHA-256");
-        md.reset();
+       
         // md.update(salt);
         byte[] bytes = new String(text).getBytes(StandardCharsets.UTF_8);
         byte[] digest = md.digest(bytes);
         for (int i = 0; i < iteration; i++) {
-            md.reset();
+    
             digest = md.digest(digest);
         }
         return digest;

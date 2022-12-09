@@ -105,6 +105,31 @@ public class CryptUtilsTest {
     }
 
     @Test
+    public void test2Sha256(){
+
+        String input1 = "test1";
+        String input2 = "test2";
+        byte[] result1;
+        byte[] result2;
+
+        try{
+
+            result1 = CryptUtils.getSha256Hash(input1.toCharArray());
+            result2 = CryptUtils.getSha256Hash(input2.toCharArray());
+        }catch(Exception e){
+            throw new RuntimeException(e);
+        }
+
+        byte[] expected1 = hexStringToByteArray("1b4f0e9851971998e732078544c96b36c3d01cedf7caa332359d6f1d83567014");
+        byte[] expected2 = hexStringToByteArray("60303ae22b998861bce3b28f33eec1be758a213c86c93c076dbe9f558c11c752");
+    
+
+        org.junit.Assert.assertArrayEquals(result1,expected1);
+        org.junit.Assert.assertArrayEquals(result2,expected2);
+
+    }
+
+    @Test
     public void testPKCSHash2(){
 
          String input = "test";
@@ -118,8 +143,10 @@ public class CryptUtilsTest {
         }
 
         
-        byte[] expected = hexStringToByteArray("3A602AB05899748C9DFB71012C31C5BDE660964C2FC7937AAD802FFE64DCEE79");
+        byte[] expected = hexStringToByteArray("2506C79F676DCD49933E2D3960E03BA14D7AC75A9F060BDFF7051174D52ADD57");
+        
 
+        System.out.println(bytesToHex(result));
         
 
         org.junit.Assert.assertArrayEquals(result,expected);

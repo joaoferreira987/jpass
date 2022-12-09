@@ -4,7 +4,6 @@ import org.junit.Test;
 
 public class ClipboardUtilsTest {
     
-    @Test
     public void testSetClipboard(){
 
         try {

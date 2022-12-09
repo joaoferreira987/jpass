@@ -118,4 +118,10 @@ public final class Configuration {
         }
         return INSTANCE;
     }
+
+    public static void clearConfiguration(){
+
+        INSTANCE = null;
+
+    }
 }

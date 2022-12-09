@@ -156,5 +156,51 @@ public class ConfigurationTest {
 
 
     }
+    @Test
+    public void testGetConfig(){
+
+
+        Configuration.clearConfiguration();
+        Configuration conf_obj = Configuration.getInstance();
+
+        
+
+        org.junit.Assert.assertNotNull(conf_obj);
+        
+    }
+
+    @Test
+    public void testGetArray(){
+
+        Configuration conf_obj = Configuration.getInstance();
+
+        String[] expected = {"1","2"};
+
+        String[] result = conf_obj.getArray("non.existant", expected );
+
+
+        org.junit.Assert.assertArrayEquals(expected, result);
+
+    }
+    @Test
+    public void isTest1(){
+
+        Configuration conf_obj = Configuration.getInstance();
+
+        Boolean result = conf_obj.is("non.existant", true);
+
+        org.junit.Assert.assertTrue(result);
+        
+    }
+    @Test
+    public void isTest2(){
+
+        Configuration conf_obj = Configuration.getInstance();
+
+        Boolean result = conf_obj.is("non.existant", false);
+
+        org.junit.Assert.assertTrue(!result);
+        
+    }
 
 }
