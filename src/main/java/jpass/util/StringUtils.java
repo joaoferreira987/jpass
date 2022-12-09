@@ -70,7 +70,7 @@ public final class StringUtils {
                 out.append('?');
             }
         }
-        System.out.println("string= " + out.toString());
+        
         return out.toString();
     }
 
